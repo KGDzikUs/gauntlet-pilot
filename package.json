@@ -1,0 +1,10 @@
+{
+  "name": "gauntlet-pilot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Repozytorium pilotażowe Gauntleta. Zawartość jest nieistotna — istotne jest to, że da się ją zwalidować i że CI odpala się na pull_request.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
