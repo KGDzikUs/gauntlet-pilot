@@ -24,3 +24,7 @@ test("srednia z pustej tablicy jest błędem, nie zerem", () => {
   // więc użycie go jako sygnału braku danych zlewa dwa różne stany.
   assert.throws(() => srednia([]), RangeError);
 });
+
+test("suma zachowuje sie poprawnie dla liczb ujemnych", () => {
+  assert.equal(suma([-2, 5]), 3);
+});
