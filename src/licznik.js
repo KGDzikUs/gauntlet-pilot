@@ -20,3 +20,21 @@ export function srednia(liczby) {
   }
   return suma(liczby) / liczby.length;
 }
+
+export function mediana(liczby) {
+  if (liczby.length === 0) {
+    // Tak samo jak przy średniej: zero elementów nie ma mediany, a zwrócenie
+    // jakiejkolwiek wartości udawałoby wynik tam, gdzie go nie ma.
+    throw new RangeError("mediana z pustej tablicy nie istnieje");
+  }
+  // Kopiujemy przed sortowaniem, żeby nie mutować tablicy wywołującego — i
+  // robimy to raz, wspólnie dla obu gałęzi długości, a nie osobno w każdej.
+  // Komparator numeryczny jest konieczny: domyślny .sort() porównuje
+  // leksykograficznie i dałby błędny porządek dla liczb wielocyfrowych.
+  const posortowane = [...liczby].sort((a, b) => a - b);
+  const srodek = Math.floor(posortowane.length / 2);
+  if (posortowane.length % 2 !== 0) {
+    return posortowane[srodek];
+  }
+  return (posortowane[srodek - 1] + posortowane[srodek]) / 2;
+}
